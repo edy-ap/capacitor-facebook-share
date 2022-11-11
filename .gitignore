@@ -1,5 +1,5 @@
 # node files
-dist
+#dist #Temporary while stay in github
 node_modules
 
 # iOS files

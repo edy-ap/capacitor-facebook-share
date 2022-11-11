@@ -1,0 +1,1 @@
+{"version":3,"file":"definitions.js","sourceRoot":"","sources":["../../src/definitions.ts"],"names":[],"mappings":"","sourcesContent":["export interface FacebookSharePlugin {\n  sharePhoto(options: ShareOptions): Promise<void>;\n}\n\nexport interface ShareOptions {\n  data: any;\n  hashtags: string;\n}"]}

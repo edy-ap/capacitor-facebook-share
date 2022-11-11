@@ -1,0 +1,57 @@
+{
+  "api": {
+    "name": "FacebookSharePlugin",
+    "slug": "facebookshareplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "sharePhoto",
+        "signature": "(options: ShareOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "ShareOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "ShareOptions"
+        ],
+        "slug": "sharephoto"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "ShareOptions",
+      "slug": "shareoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "data",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "any"
+        },
+        {
+          "name": "hashtags",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [],
+  "pluginConfigs": []
+}
