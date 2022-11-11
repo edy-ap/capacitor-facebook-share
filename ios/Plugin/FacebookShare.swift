@@ -3,23 +3,25 @@ import FBSDKShareKit
 
 @objc public class FacebookShare: NSObject {
 
-    @objc public func sharePhoto(data: String, hashtags: String) {
+    @objc public func sharePhoto(data: String, hashtags: String, facebookSharePlugin: FacebookSharePlugin) {
         
-        let decodedData = NSData(base64EncodedString: data!, options: [])
+        let decodedData = NSData(base64Encoded: data, options: [])
         
-        if let data = decodedData {
-            let image = UIImage(data: data as Data)
-        }
+        guard let stringData = Data(base64Encoded: data),
+              let uiImage = UIImage(data: stringData) else {
+                  print("Error: couldn't create UIImage")
+                  return
+              }
         
-        let photo = SharePhoto(image: image, userGenerated: true)
+        let photo = SharePhoto(image: uiImage, isUserGenerated: true)
         
         let content = SharePhotoContent()
         content.photos = [photo]
         
         let dialog = ShareDialog(
-            fromViewController: self,
+            fromViewController: facebookSharePlugin.bridge?.viewController,
             content: content,
-            delegate: self
+            delegate: facebookSharePlugin
         )
 
         // Recommended to validate before trying to display the dialog

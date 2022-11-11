@@ -12,7 +12,7 @@ public class FacebookSharePlugin: CAPPlugin {
     @objc func sharePhoto(_ call: CAPPluginCall) {
         let data = call.getString("data") ?? ""
         let hashtags = call.getString("hashtags") ?? ""
-        implementation.sharePhoto(data: data, hashtags: hashtags)
+        implementation.sharePhoto(data: data, hashtags: hashtags, self)
         call.resolve()
     }
 }
