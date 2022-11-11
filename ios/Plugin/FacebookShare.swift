@@ -1,9 +1,22 @@
 import Foundation
 import FBSDKShareKit
 
-@objc public class FacebookShare: NSObject {
+@objc public class FacebookShare: NSObject, SharingDelegate {
+    
+    public func sharer(_ sharer: FBSDKShareKit.Sharing, didCompleteWithResults results: [String : Any]) {
+    
+    }
+    
+    public func sharer(_ sharer: FBSDKShareKit.Sharing, didFailWithError error: Error) {
+    
+    }
+    
+    public func sharerDidCancel(_ sharer: FBSDKShareKit.Sharing) {
+    
+    }
+    
 
-    @objc public func sharePhoto(data: String, hashtags: String, facebookSharePlugin: FacebookSharePlugin) {
+    @objc public func sharePhoto(data: String, hashtags: String) {
         
         let decodedData = NSData(base64Encoded: data, options: [])
         
@@ -18,10 +31,14 @@ import FBSDKShareKit
         let content = SharePhotoContent()
         content.photos = [photo]
         
+        if(hashtags != ""){
+            content.hashtag = Hashtag(hashtags)
+        }
+        
         let dialog = ShareDialog(
-            fromViewController: facebookSharePlugin.bridge?.viewController,
+            viewController: UIApplication.shared.keyWindow?.rootViewController,
             content: content,
-            delegate: facebookSharePlugin
+            delegate: self
         )
 
         // Recommended to validate before trying to display the dialog
@@ -32,5 +49,8 @@ import FBSDKShareKit
         }
 
         dialog.show()
+        
+
     }
 }
+
