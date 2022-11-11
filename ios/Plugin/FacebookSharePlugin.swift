@@ -8,11 +8,11 @@ import Capacitor
 @objc(FacebookSharePlugin)
 public class FacebookSharePlugin: CAPPlugin {
     private let implementation = FacebookShare()
-
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.resolve([
-            "value": implementation.echo(value)
-        ])
+    
+    @objc func sharePhoto(_ call: CAPPluginCall) {
+        let data = call.getString("data") ?? ""
+        let hashtags = call.getString("hashtags") ?? ""
+        implementation.sharePhoto(data: data, hashtags: hashtags)
+        call.resolve()
     }
 }
