@@ -11,7 +11,7 @@ const FacebookShare = core.registerPlugin('FacebookShare', {
 class FacebookShareWeb extends core.WebPlugin {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     sharePhoto(_options) {
-        throw new Error('Not supported');
+        throw new Error('Not supported in web');
     }
 }
 

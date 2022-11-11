@@ -7,7 +7,7 @@
     "methods": [
       {
         "name": "sharePhoto",
-        "signature": "(options: ShareOptions) => Promise<void>",
+        "signature": "(options: ShareOptions) => Promise<ShareResult>",
         "parameters": [
           {
             "name": "options",
@@ -15,10 +15,11 @@
             "type": "ShareOptions"
           }
         ],
-        "returns": "Promise<void>",
+        "returns": "Promise<ShareResult>",
         "tags": [],
         "docs": "",
         "complexTypes": [
+          "ShareResult",
           "ShareOptions"
         ],
         "slug": "sharephoto"
@@ -27,6 +28,29 @@
     "properties": []
   },
   "interfaces": [
+    {
+      "name": "ShareResult",
+      "slug": "shareresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "success",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "message",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
     {
       "name": "ShareOptions",
       "slug": "shareoptions",
