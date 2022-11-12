@@ -5,7 +5,17 @@ export interface FacebookSharePlugin {
 
 export interface ShareOptions {
   hashtags?: string;
-  sharedMode?: 'automatic' | 'feed' | 'native' | 'web';
+  /**
+   * Only iOS: feedWeb, feedBrowser, shareSheet
+   */
+  sharedMode?:
+    | 'automatic'
+    | 'feed'
+    | 'native'
+    | 'web'
+    | 'feedWeb'
+    | 'feedBrowser'
+    | 'shareSheet';
 }
 
 export interface SharePhotoOptions extends ShareOptions {

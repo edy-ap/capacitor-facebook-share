@@ -29,48 +29,27 @@ public class FacebookSharePlugin extends Plugin {
         public void onCancel() {
             Log.d("FacebookSharePlugin", "Canceled");
 
-            PluginCall savedCall = getBridge().getSavedCall(callbackId);
-
-            if (savedCall == null) {
-                Log.e(getLogTag(), "error: no plugin saved call found.");
-                return;
-            }
-
             JSObject response = new JSObject();
             response.put("success", false);
             response.put("message", "User cancelled");
-            savedCall.resolve(response);
-            getBridge().releaseCall(callbackId);
+
+            proccessResponse(response);
         }
 
         @Override
         public void onError(@NonNull FacebookException error) {
             Log.d(getLogTag(), String.format("Error: %s", error.toString()));
 
-            PluginCall savedCall = getBridge().getSavedCall(callbackId);
-
-            if (savedCall == null) {
-                Log.e(getLogTag(), "error: no plugin saved call found.");
-                return;
-            }
-
             JSObject response = new JSObject();
             response.put("success", false);
             response.put("message", error.getMessage());
-            savedCall.resolve(response);
-            getBridge().releaseCall(callbackId);
+
+            proccessResponse(response);
         }
 
         @Override
         public void onSuccess(@NonNull Sharer.Result result) {
             Log.d("FacebookSharePlugin", "Success!");
-            Log.d(getLogTag(), "callbackIdSaved: " + callbackId);
-            PluginCall savedCall = getBridge().getSavedCall(callbackId);
-
-            if (savedCall == null) {
-                Log.e(getLogTag(), "error: no plugin saved call found.");
-                return;
-            }
 
             JSObject response = new JSObject();
             response.put("success", true);
@@ -78,6 +57,18 @@ public class FacebookSharePlugin extends Plugin {
             if (result.getPostId() != null) {
                 response.put("postId", result.getPostId());
             }
+
+            proccessResponse(response);
+        }
+
+        private void proccessResponse(JSObject response) {
+            PluginCall savedCall = getBridge().getSavedCall(callbackId);
+
+            if (savedCall == null) {
+                Log.e(getLogTag(), "error: no plugin saved call found.");
+                return;
+            }
+
             savedCall.resolve(response);
             getBridge().releaseCall(callbackId);
         }
