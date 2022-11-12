@@ -4,9 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.facebook.FacebookSdk;
 import com.facebook.share.model.ShareHashtag;
 import com.facebook.share.model.SharePhoto;
@@ -16,29 +14,23 @@ import com.getcapacitor.PluginCall;
 
 public class FacebookShare {
 
-    AppCompatActivity activity;
+    private ShareDialog shareDialog;
 
-    public FacebookShare(AppCompatActivity activity){
-        this.activity = activity;
+    public FacebookShare(ShareDialog shareDialog) {
+        this.shareDialog = shareDialog;
     }
 
     public void sharePhoto(String data, String hashtags) {
         byte[] photoImageData = Base64.decode(data, Base64.DEFAULT);
         Bitmap image = BitmapFactory.decodeByteArray(photoImageData, 0, photoImageData.length);
-        SharePhoto photo = new SharePhoto.Builder()
-                .setBitmap(image)
-                .build();
+        SharePhoto photo = new SharePhoto.Builder().setBitmap(image).build();
 
-        SharePhotoContent.Builder contentBuilder = new SharePhotoContent.Builder()
-                .addPhoto(photo);
+        SharePhotoContent.Builder contentBuilder = new SharePhotoContent.Builder().addPhoto(photo);
 
-        if(hashtags != null){
-            contentBuilder.setShareHashtag(new ShareHashtag.Builder()
-                    .setHashtag(hashtags)
-                    .build());
+        if (hashtags != null) {
+            contentBuilder.setShareHashtag(new ShareHashtag.Builder().setHashtag(hashtags).build());
         }
 
-        ShareDialog shareDialog = new ShareDialog(activity);
         shareDialog.show(contentBuilder.build(), ShareDialog.Mode.AUTOMATIC);
     }
 }
