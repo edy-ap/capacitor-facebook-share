@@ -3,7 +3,8 @@ export interface FacebookSharePlugin {
   shareVideo(options: ShareVideoOptions): Promise<ShareResult>;
 }
 
-export interface ShareOptions {
+export interface SharePhotoOptions {
+  data: any;
   hashtags?: string;
   /**
    * Only iOS: feedWeb, feedBrowser, shareSheet
@@ -18,12 +19,20 @@ export interface ShareOptions {
     | 'shareSheet';
 }
 
-export interface SharePhotoOptions extends ShareOptions {
-  data: any;
-}
-
-export interface ShareVideoOptions extends ShareOptions {
+export interface ShareVideoOptions {
   path: string;
+  hashtags?: string;
+  /**
+   * Only iOS: feedWeb, feedBrowser, shareSheet
+   */
+  sharedMode?:
+    | 'automatic'
+    | 'feed'
+    | 'native'
+    | 'web'
+    | 'feedWeb'
+    | 'feedBrowser'
+    | 'shareSheet';
 }
 
 export interface ShareResult {

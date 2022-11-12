@@ -90,6 +90,20 @@
           "docs": "",
           "complexTypes": [],
           "type": "any"
+        },
+        {
+          "name": "hashtags",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "sharedMode",
+          "tags": [],
+          "docs": "Only iOS: feedWeb, feedBrowser, shareSheet",
+          "complexTypes": [],
+          "type": "'automatic' | 'feed' | 'native' | 'web' | 'feedWeb' | 'feedBrowser' | 'shareSheet' | undefined"
         }
       ]
     },
@@ -106,6 +120,20 @@
           "docs": "",
           "complexTypes": [],
           "type": "string"
+        },
+        {
+          "name": "hashtags",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "sharedMode",
+          "tags": [],
+          "docs": "Only iOS: feedWeb, feedBrowser, shareSheet",
+          "complexTypes": [],
+          "type": "'automatic' | 'feed' | 'native' | 'web' | 'feedWeb' | 'feedBrowser' | 'shareSheet' | undefined"
         }
       ]
     }
