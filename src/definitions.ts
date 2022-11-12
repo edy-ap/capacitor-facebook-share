@@ -4,6 +4,9 @@ export interface FacebookSharePlugin {
 }
 
 export interface SharePhotoOptions {
+  /**
+   * Base64 encoded data
+   */
   data: any;
   hashtags?: string;
   /**
@@ -20,6 +23,9 @@ export interface SharePhotoOptions {
 }
 
 export interface ShareVideoOptions {
+  /**
+   * Path of the video file
+   */
   path: string;
   hashtags?: string;
   /**
