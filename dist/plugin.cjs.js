@@ -13,6 +13,10 @@ class FacebookShareWeb extends core.WebPlugin {
     sharePhoto(_options) {
         throw new Error('Not supported in web');
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    shareVideo(_options) {
+        throw new Error('Not supported in web');
+    }
 }
 
 var web = /*#__PURE__*/Object.freeze({

@@ -1,6 +1,5 @@
 package com.apestudios.facebook.share;
 
-import android.content.Intent;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import com.facebook.CallbackManager;
@@ -65,7 +64,7 @@ public class FacebookSharePlugin extends Plugin {
         @Override
         public void onSuccess(@NonNull Sharer.Result result) {
             Log.d("FacebookSharePlugin", "Success!");
-            Log.w(getLogTag(), "callbackIdSaved: " + callbackId);
+            Log.d(getLogTag(), "callbackIdSaved: " + callbackId);
             PluginCall savedCall = getBridge().getSavedCall(callbackId);
 
             if (savedCall == null) {
@@ -97,22 +96,25 @@ public class FacebookSharePlugin extends Plugin {
     public void sharePhoto(PluginCall call) {
         String data = call.getString("data");
         String hashtags = call.getString("hashtags");
+        String sharedMode = call.getString("sharedMode", "automatic");
 
-        implementation.sharePhoto(data, hashtags);
+        implementation.sharePhoto(data, hashtags, sharedMode);
 
         callbackId = call.getCallbackId();
-        Log.w(getLogTag(), "callbackId: " + callbackId);
+        Log.d(getLogTag(), "callbackId: " + callbackId);
         this.bridge.saveCall(call);
     }
 
-    @Override
-    protected void handleOnActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d(getLogTag(), "Entering handleOnActivityResult(" + requestCode + ", " + resultCode + ")");
+    @PluginMethod
+    public void shareVideo(PluginCall call) {
+        String path = call.getString("path");
+        String hashtags = call.getString("hashtags");
+        String sharedMode = call.getString("sharedMode", "automatic");
 
-        if (callbackManager.onActivityResult(requestCode, resultCode, data)) {
-            Log.d(getLogTag(), "onActivityResult succeeded");
-        } else {
-            Log.w(getLogTag(), "onActivityResult failed");
-        }
+        implementation.shareVideo(path, hashtags, sharedMode);
+
+        callbackId = call.getCallbackId();
+        Log.d(getLogTag(), "callbackId: " + callbackId);
+        this.bridge.saveCall(call);
     }
 }

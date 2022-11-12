@@ -1,10 +1,19 @@
 export interface FacebookSharePlugin {
-  sharePhoto(options: ShareOptions): Promise<ShareResult>;
+  sharePhoto(options: SharePhotoOptions): Promise<ShareResult>;
+  shareVideo(options: ShareVideoOptions): Promise<ShareResult>;
 }
 
 export interface ShareOptions {
+  hashtags?: string;
+  sharedMode?: 'automatic' | 'feed' | 'native' | 'web';
+}
+
+export interface SharePhotoOptions extends ShareOptions {
   data: any;
-  hashtags: string;
+}
+
+export interface ShareVideoOptions extends ShareOptions {
+  path: string;
 }
 
 export interface ShareResult {

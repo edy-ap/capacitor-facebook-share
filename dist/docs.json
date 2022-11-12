@@ -7,12 +7,12 @@
     "methods": [
       {
         "name": "sharePhoto",
-        "signature": "(options: ShareOptions) => Promise<ShareResult>",
+        "signature": "(options: SharePhotoOptions) => Promise<ShareResult>",
         "parameters": [
           {
             "name": "options",
             "docs": "",
-            "type": "ShareOptions"
+            "type": "SharePhotoOptions"
           }
         ],
         "returns": "Promise<ShareResult>",
@@ -20,9 +20,28 @@
         "docs": "",
         "complexTypes": [
           "ShareResult",
-          "ShareOptions"
+          "SharePhotoOptions"
         ],
         "slug": "sharephoto"
+      },
+      {
+        "name": "shareVideo",
+        "signature": "(options: ShareVideoOptions) => Promise<ShareResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "ShareVideoOptions"
+          }
+        ],
+        "returns": "Promise<ShareResult>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "ShareResult",
+          "ShareVideoOptions"
+        ],
+        "slug": "sharevideo"
       }
     ],
     "properties": []
@@ -59,8 +78,8 @@
       ]
     },
     {
-      "name": "ShareOptions",
-      "slug": "shareoptions",
+      "name": "SharePhotoOptions",
+      "slug": "sharephotooptions",
       "docs": "",
       "tags": [],
       "methods": [],
@@ -71,9 +90,18 @@
           "docs": "",
           "complexTypes": [],
           "type": "any"
-        },
+        }
+      ]
+    },
+    {
+      "name": "ShareVideoOptions",
+      "slug": "sharevideooptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
         {
-          "name": "hashtags",
+          "name": "path",
           "tags": [],
           "docs": "",
           "complexTypes": [],
