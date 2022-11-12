@@ -48,6 +48,13 @@
           "docs": "",
           "complexTypes": [],
           "type": "string"
+        },
+        {
+          "name": "postId",
+          "tags": [],
+          "docs": "If available",
+          "complexTypes": [],
+          "type": "string"
         }
       ]
     },

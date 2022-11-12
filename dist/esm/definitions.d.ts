@@ -8,4 +8,8 @@ export interface ShareOptions {
 export interface ShareResult {
     success: boolean;
     message: string;
+    /**
+     * If available
+     */
+    postId: string;
 }
